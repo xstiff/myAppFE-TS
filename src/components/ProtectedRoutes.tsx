@@ -6,7 +6,7 @@ interface Props {
   children: any;
 }
 
-export const ProtectedRoutes = ({ loggedIn, children }) => {
+export const ProtectedRoutes = ({ loggedIn, children }: Props) => {
   if (!loggedIn) {
     return <Navigate to="/user/login" replace />;
   }

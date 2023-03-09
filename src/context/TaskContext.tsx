@@ -1,8 +1,12 @@
 import React, { useState, createContext } from 'react';
 
+interface IUserProps {
+  children: any
+}
+
 export const TaskContext = createContext({ task: {}, setUser: () => {} });
 
-export const TaskContextProvider = ({ children }) => {
+export const TaskContextProvider = ({ children }: IUserProps) => {
   const [task, setTask] = useState({});
   return (
     <TaskContext.Provider value={{ task, setTask }}>
@@ -10,3 +14,4 @@ export const TaskContextProvider = ({ children }) => {
     </TaskContext.Provider>
   );
 };
+// setTask nie umiem tego otypować....

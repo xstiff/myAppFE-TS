@@ -38,7 +38,7 @@ export const App = () => {
         <Route
           path="/user/register"
           element={
-            <NotProtectedRoutes loggedIn={user._id ? true : false}>
+            <NotProtectedRoutes loggedIn={!!user._id}>
               <Register />
             </NotProtectedRoutes>
           }
@@ -46,7 +46,7 @@ export const App = () => {
         <Route
           path="/user/login"
           element={
-            <NotProtectedRoutes loggedIn={user._id ? true : false}>
+            <NotProtectedRoutes loggedIn={!!user._id}>
               <Login />
             </NotProtectedRoutes>
           }
@@ -54,7 +54,7 @@ export const App = () => {
         <Route
           path="/user/profile"
           element={
-            <ProtectedRoutes loggedIn={user._id ? true : false}>
+            <ProtectedRoutes loggedIn={!!user._id}>
               <Profile />
             </ProtectedRoutes>
           }

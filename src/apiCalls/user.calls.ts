@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { UserEntity } from 'types';
+// import { UserEntity } from 'types';
+import {IUser} from "../types/userType";
 
-
-export const register = async (user: UserEntity) => {
+export const register = async (user: IUser) => {
   try {
     const res = await axios.post('/api/users/register', user);
     return res;
@@ -11,7 +11,7 @@ export const register = async (user: UserEntity) => {
   }
 };
 
-export const login = async (user: UserEntity) => {
+export const login = async (user: IUser) => {
   try {
     const res = await axios.post('/api/users/login', user);
     return res;
@@ -38,7 +38,7 @@ export const getUser = async () => {
   }
 };
 
-export const updateUser = async (user: UserEntity) => {
+export const updateUser = async (user: IUser) => {
   try {
     const res = await axios.put('/api/users/updatedetails', user);
     return res;

@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getTask } from '../../apiCalls/task.calls';
+import {ITodo} from "../../types/todoType";
 
-export const ViewTask = () => {
+interface ViewTaskProps {
+  todo: ITodo
+}
+
+export const ViewTask = (props: ViewTaskProps) => {
   const [todo, setTodo] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getTask(id);
+      /**nie wiem jak otypować id, w taskCalls jest tam otypowane jako string. Jak się do tego dobrać. We wszystkich plikach gdzie pobieram dane z apiCalls, nie wiem jak się do nich dobrać. */
       if (response.status === 200) {
         setTodo(response.data.todo);
       } else {
@@ -21,13 +27,13 @@ export const ViewTask = () => {
     <div className="text-center bg-white w-3/4 m-auto rounded py-3 mt-3">
       {todo && (
         <div>
-          <h1 className="text-3xl mt-4 font-bold">Title: {todo.title}</h1>
+          <h1 className="text-3xl mt-4 font-bold">Title: {props.todo.title}</h1>
           <h2 className="mt-3 text-2xl">
-            Completed: {todo.completed ? 'Completed' : 'Not yet...'}
+            Completed: {props.todo.completed ? 'Completed' : 'Not yet...'}
           </h2>
-          <p className="mt-3">Description: {todo.description}</p>
-          <p className="mt-3">Created: {todo.createdAt}</p>
-          <p className="mt-3">Updated: {todo.updatedAt}</p>
+          <p className="mt-3">Description: {props.todo.description}</p>
+          <p className="mt-3">Created: {props.todo.createdAt}</p>
+          <p className="mt-3">Updated: {props.todo.updatedAt}</p>
         </div>
       )}
     </div>

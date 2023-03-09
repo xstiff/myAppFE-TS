@@ -335,7 +335,7 @@ export const deleteUser = async (req, res) => {
     }
 };
 
-index.js
+index.ts
 
 import express from 'express';
 import dotenv from 'dotenv';

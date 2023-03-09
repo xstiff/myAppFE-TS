@@ -1,6 +1,11 @@
 import { Navigate } from 'react-router-dom';
 
-export const NotProtectedRoutes = ({ loggedIn, children }) => {
+interface Props {
+  loggedIn: any,
+  children: any
+}
+
+export const NotProtectedRoutes = ({ loggedIn, children }: Props) => {
   if (loggedIn) {
     return <Navigate to="/" replace />;
   }
