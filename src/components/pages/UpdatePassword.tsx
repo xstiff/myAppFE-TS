@@ -14,8 +14,8 @@ export const UpdatePassword = () => {
             alert('Password does NOT match');
             return;
         }
-
-        const data = {
+/**   Nie chce any */
+        const data: any = {
             password: oldPassword,
             newPassword: password,
         };

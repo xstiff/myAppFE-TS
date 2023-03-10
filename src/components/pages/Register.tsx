@@ -13,7 +13,7 @@ export const Register = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
       alert('Password does not match!');
@@ -24,6 +24,9 @@ export const Register = () => {
     if (response.status === 201) {
       alert('User successfully registered.');
       setUser(response.data.user);
+
+      /**Expected 0 arguments, but got 1.*/
+
       navigate('/');
     } else {
       alert(response.response.data.msg);

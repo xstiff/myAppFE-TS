@@ -2,28 +2,33 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { deleteUser, logout } from '../../apiCalls/user.calls';
+import {IUser} from "../../types/userType";
 
-export const Profile = () => {
+interface ProfileProps {
+  user: IUser
+}
+
+export const Profile = (props: ProfileProps) => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleLogout = async (e) => {
+  const handleLogout = async (e: React.FormEvent) => {
     const response = await logout();
     if (response.status === 200) {
       alert('User logged out successfully.');
-      setUser({});
+      setUser({});                    // Expected 0 arguments, but got 1.
       navigate('/user/login');
     } else {
       alert(response.response.data.msg);
     }
   };
 
-  const handleDelete = async (e) => {
+  const handleDelete = async (e: React.FormEvent) => {
     if (window.confirm('Are you sure you want to delete your account?')) {
       const response = await deleteUser();
       if (response.status === 200) {
         alert('User deleted successfully.');
-        setUser({});
+        setUser({});                  // Expected 0 arguments, but got 1.
         // navigate('/user/login');
         navigate('/');
       } else {
@@ -36,9 +41,9 @@ export const Profile = () => {
     <div className="w-1/4 m-auto text-center">
       <h1 className="text-3x1 my-3 font-bold">Profile</h1>
       <div className="mt-3">
-        <h2 className="text-2xl">Name: {user.name}</h2>
-        <h2 className="text-2xl">Email: {user.email}</h2>
-        <h2 className="text-2xl">Age: {user.age}</h2>
+        <h2 className="text-2xl">Name: {props.user.name}</h2>
+        <h2 className="text-2xl">Email: {props.user.email}</h2>
+        <h2 className="text-2xl">Age: {props.user.age}</h2>
       </div>
       <div className="mt-3">
         <button

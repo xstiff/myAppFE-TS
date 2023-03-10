@@ -9,6 +9,8 @@ interface UpdateTaskProps {
 }
 
 export const UpdateTask = (props: UpdateTaskProps) => {
+
+    /**  Property 'setTask' does not exist on type '{ task: {}; setUser: () => void; }'.*/
     const {task, setTask} = useContext(TaskContext);
     const {id}  = useParams();
     const myTodo = task.find((todo) => todo._id === id);
@@ -22,6 +24,7 @@ export const UpdateTask = (props: UpdateTaskProps) => {
         e.preventDefault();
         const data = {title, description, completed};
         const response = await updateTask(id, data);
+        /**Argument of type 'string | undefined' is not assignable to parameter of type 'string'.Type 'undefined' is not assignable to type 'string'.*/
         if (response.status === 200) {
             alert('Successfully updated.');
             //   alert(response.response.data.msg);

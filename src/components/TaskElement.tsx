@@ -1,9 +1,10 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {deleteTask} from '../apiCalls/task.calls';
+import {ITodo} from "../types/todoType";
 
 interface TaskElementProps {
-    prevTask: any
+    prevTask: ITodo
 }
 
 export const TaskElement = ({prevTask}: TaskElementProps) => {

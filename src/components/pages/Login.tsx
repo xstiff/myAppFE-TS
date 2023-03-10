@@ -11,14 +11,14 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const data = { email, password };
+// nie chce any, musze sprawdzic czym to jest... nie wiem jak...
+    const data: any = { email, password };
     const response = await login(data);
     if (response.status === 200) {
       alert('User logged in successfully.');
-      setUser(response.data.user);
+      setUser(response.data.user);  //  Expected 0 arguments, but got 1.
       navigate('/');
     } else {
       alert(response.response.data.msg);

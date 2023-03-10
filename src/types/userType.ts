@@ -1,10 +1,11 @@
+
 export  interface IUser {
-  _id: string;
+  _id?: string;
   name: string;
   email: string;
   age: string;
   password: string;
-  completed: boolean;
+  completed?: boolean;
 
   createdAt?: string;
   updatedAt?: string;
