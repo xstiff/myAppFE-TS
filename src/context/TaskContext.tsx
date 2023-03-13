@@ -15,9 +15,9 @@ export const TaskContextProvider = ({ children }: IUserProps) => {
   );
 };
 /**
- * ype '{ task: {}; setTask: React.Dispatch<React.SetStateAction<{}>>; }' is not assignable to type '{ task: {}; setUser: () => void; }'.   Object literal may only specify known properties, and 'setTask' does not exist in type '{ task: {}; setUser: () => void; }'.
+ * type '{ task: {}; setTask: React.Dispatch<React.SetStateAction<{}>>; }' is not assignable to type '{ task: {}; setUser: () => void; }'. Object literal may only specify known properties, and 'setTask' does not exist in type '{ task: {}; setUser: () => void; }'.
  *
- * / setTask nie umiem tego otypować....
+ * / setTask nie rozumiem do końca....
  */
 
 

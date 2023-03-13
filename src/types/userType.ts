@@ -21,3 +21,10 @@ export type ApiDataType = {
   //   todos: IUser[];
   user?: IUser;
 };
+export type IUpdateUser = {
+  name: string;
+  email: string,
+  age: string,
+  password?: string
+}
+export type  IUpdatePass = Omit<IUser, 'name' | 'email' |'age'>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createTask } from '../../apiCalls/task.calls';
 
+
+
 export const AddTask = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -10,10 +12,9 @@ export const AddTask = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = { title, description };
+    const data = { title, description  };
     const response = await createTask(data);
-    /**nie wiem jak się do tego dobrać. We wszystkich plikach gdzie pobieram dane z apiCalls, nie wiem jak się do nich dobrać.
-     *  Argument of type '{ title: string; description: string; }' is not assignable to parameter of type 'ITodo'. Type '{ title: string; description: string; }' is missing the following properties from type 'ITodo': id, _id, completed, user' */
+ //data -nowy typ z task.calls = zobaczymy czy zadziała jak odpale
 
     if (response.status === 201) {
       alert('Task created');

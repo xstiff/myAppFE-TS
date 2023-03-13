@@ -1,6 +1,5 @@
 import axios from 'axios';
-// import { UserEntity } from 'types';
-import {IUser} from "../types/userType";
+import {IUpdatePass, IUpdateUser, IUser} from "../types/userType";
 
 export const register = async (user: IUser) => {
   try {
@@ -11,7 +10,8 @@ export const register = async (user: IUser) => {
   }
 };
 
-export const login = async (user: IUser) => {
+export const login = async (user: IUpdatePass) => {
+// export const login = async (user: IUser) => {
   try {
     const res = await axios.post('/api/users/login', user);
     return res;
@@ -38,7 +38,7 @@ export const getUser = async () => {
   }
 };
 
-export const updateUser = async (user: IUser) => {
+export const updateUser = async (user: IUpdateUser) => {
   try {
     const res = await axios.put('/api/users/updatedetails', user);
     return res;
@@ -47,7 +47,8 @@ export const updateUser = async (user: IUser) => {
   }
 };
 
-export const updatePassword = async (data: string) => {
+export const updatePassword = async (data: IUpdatePass) => {
+// export const updatePassword = async (data: IUser) => {
   try {
     const res = await axios.put('/api/users/updatepassword', data);
     return res;

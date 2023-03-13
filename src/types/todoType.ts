@@ -24,3 +24,7 @@ export type ApiDataType = {
   todos: ITodo[];
   todo?: ITodo;
 };
+export type ICreateTask = {
+  title: string;
+  description: string;
+}

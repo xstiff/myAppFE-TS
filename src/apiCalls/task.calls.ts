@@ -1,8 +1,10 @@
 import axios from 'axios';
-import {ITodo} from "../types/todoType";
+import {ICreateTask, ITodo} from "../types/todoType";
 
 
-export const createTask = async (todo: ITodo) => {
+
+
+export const createTask = async (todo: ICreateTask) => {
     try {
         const res = await axios.post('/api/todos/create', todo);
         return res;

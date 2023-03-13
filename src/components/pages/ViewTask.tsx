@@ -15,8 +15,8 @@ export const ViewTask = (props: ViewTaskProps) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getTask(id);
-      /**nie wiem jak otypować id, w taskCalls jest tam otypowane jako string. Jak się do tego dobrać. We wszystkich plikach gdzie pobieram dane z apiCalls, nie wiem jak się do nich dobrać.
-       *  Argument of type 'string | undefined' is not assignable to parameter of type 'string' */
+
+
       if (response.status === 200) {
         setTodo(response.data.todo);
       } else {

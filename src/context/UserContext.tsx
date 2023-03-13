@@ -7,8 +7,7 @@ interface IUserProps {
 }
 
 export const UserContext = createContext({
-    user: {}, setUser: () => {
-    }
+    user: {}, setUser: () => {}
 });
 
 export const UserContextProvider = ({children}: IUserProps) => {
@@ -19,4 +18,6 @@ export const UserContextProvider = ({children}: IUserProps) => {
         </UserContext.Provider>
     );
 };
-// setUser nie umiem tego otypować....
+/** setUser nie wiem jak to rozgryżć ....
+ * setUse rto pusty obiekt w profile.tsx błąd
+ * jak to rozkminię to i błedy w login.tsx i register.tsx pewnie się rozwiążą */

@@ -24,7 +24,7 @@ export const Register = () => {
     if (response.status === 201) {
       alert('User successfully registered.');
       setUser(response.data.user);
-
+      /** rozumiem błąd, nie wiem jak go rozwikłać* i tak jest w paru miejscach/
       /**Expected 0 arguments, but got 1.*/
 
       navigate('/');

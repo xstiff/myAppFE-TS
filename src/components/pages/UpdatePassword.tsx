@@ -14,8 +14,9 @@ export const UpdatePassword = () => {
             alert('Password does NOT match');
             return;
         }
-/**   Nie chce any */
-        const data: any = {
+        //data -nowy typ z user.calls = zobaczymy czy zadziała jak odpale
+
+        const data = {
             password: oldPassword,
             newPassword: password,
         };

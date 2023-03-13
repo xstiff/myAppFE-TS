@@ -13,20 +13,23 @@ export const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-// nie chce any, musze sprawdzic czym to jest... nie wiem jak...
-    const data: any = { email, password };
+
+// data-nowy typ z user.calls/userTypes zobaczymy co bedzie jak odpale.
+    const data = { email, password };
     const response = await login(data);
     if (response.status === 200) {
       alert('User logged in successfully.');
-      setUser(response.data.user);  //  Expected 0 arguments, but got 1.
+      setUser(response.data.user);
+      /**Expected 0 arguments, but got 1. rozumiem błąd, nie rozumiem skąd pochodzi, z useContext? */
       navigate('/');
     } else {
       alert(response.response.data.msg);
     }
   };
-  //validation messages not fetched from BE! throws Undefined. try to fix it
+
 
   return (
+
     <div className="w-1/4 m-auto text-center">
       <h1 className="text-3x1 my-3 font-bold">Login</h1>
       <form action="" onSubmit={handleSubmit}>
