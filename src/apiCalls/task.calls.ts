@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {ICreateTask, ITodo} from "../types/todoType";
+import {ICreateTask, ITodo, IUpdateTask} from "../types/todoType";
 
 
 
@@ -31,7 +31,7 @@ export const getTask = async (id: string) => {
     }
 };
 
-export const updateTask = async (id: string, todo: ITodo) => {
+export const updateTask = async (id: string, todo: IUpdateTask) => {
     try {
         const res = await axios.put(`/api/todos/update/${id}`, todo);
         return res;

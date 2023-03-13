@@ -20,6 +20,7 @@ export const Login = () => {
     if (response.status === 200) {
       alert('User logged in successfully.');
       setUser(response.data.user);
+
       /**Expected 0 arguments, but got 1. rozumiem błąd, nie rozumiem skąd pochodzi, z useContext? */
       navigate('/');
     } else {

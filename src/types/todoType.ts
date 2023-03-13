@@ -1,3 +1,5 @@
+import {IUser} from "./userType";
+
 export interface ITodo {
   id: string;
   _id: string;
@@ -28,3 +30,4 @@ export type ICreateTask = {
   title: string;
   description: string;
 }
+export type  IUpdateTask = Omit<ITodo, 'id' | '_id' |'user'>

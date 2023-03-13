@@ -2,7 +2,7 @@ import React, {ChangeEvent, FormEventHandler, useContext, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom';
 import {updateTask} from '../../apiCalls/task.calls';
 import {TaskContext} from '../../context/TaskContext';
-import {ITodo} from "../../types/todoType";
+import {ITodo, IUpdateTask} from "../../types/todoType";
 
 interface UpdateTaskProps {
     todo: ITodo
@@ -23,8 +23,11 @@ export const UpdateTask = (props: UpdateTaskProps) => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const data = {title, description, completed};
-        const response = await updateTask(id, data);
-        /**Argument of type 'string | undefined' is not assignable to parameter of type 'string'.Type 'undefined' is not assignable to type 'string'.*/
+        const response = await updateTask(String(id), data);
+
+        /** id nadal jako string lub undefined, ale błedu nie ma. zobaczymy czy odpali zawsze można zmienić na any
+         * zmieniony typ w task calls.
+         * */
         if (response.status === 200) {
             alert('Successfully updated.');
             //   alert(response.response.data.msg);

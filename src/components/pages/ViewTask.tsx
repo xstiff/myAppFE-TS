@@ -14,7 +14,8 @@ export const ViewTask = (props: ViewTaskProps) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getTask(id);
+      const response = await getTask(String(id));
+      /** id nadal jako string lub undefined, ale błedu nie ma. zobaczymy czy odpali zawsze można zmienić na any w getTasku*/
 
 
       if (response.status === 200) {
