@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 interface Props {
-  loggedIn: any;
+  loggedIn: boolean;
   children: any;
 }
 

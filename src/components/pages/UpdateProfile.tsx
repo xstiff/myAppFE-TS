@@ -4,11 +4,8 @@ import {useNavigate} from 'react-router-dom';
 import {updateUser} from '../../apiCalls/user.calls';
 import {IUser} from "../../types/userType";
 
-interface UpdateProfileProps {
-    user: IUser
-}
 
-export const UpdateProfile = (props: UpdateProfileProps) => {
+export const UpdateProfile = (props: any) => {
     const {user, setUser} = useContext(UserContext);
 
     const [name, setName] = useState(props.user.name);

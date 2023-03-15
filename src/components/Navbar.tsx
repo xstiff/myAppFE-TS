@@ -14,7 +14,7 @@ export const Navbar = ({user}: NavbarProps) => {
                 Things I want to do before I die
             </h1>
             <ul className="flex">
-                {user._id && (
+                {user && (
                     <>
                         <li className="mr-3">
                             <Link className="hover:text-pink-500" to="/">
@@ -33,7 +33,7 @@ export const Navbar = ({user}: NavbarProps) => {
                         </li>
                     </>
                 )}
-                {!user._id && (
+                {!user && (
                     <>
                         <li className="mr-3">
                             <Link className="hover:text-pink-500" to="user/register">

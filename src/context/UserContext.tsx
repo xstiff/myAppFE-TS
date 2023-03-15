@@ -1,23 +1,27 @@
-import React, {useState, createContext} from 'react';
+import React, {useState, createContext, ReactNode, Dispatch, SetStateAction} from 'react';
 import {IUser} from '../types/userType'
 
 interface IUserProps {
     user: IUser,
-    children: any
+    children: ReactNode
 }
 
-export const UserContext = createContext({
-    user: {}, setUser: () => {}
+interface IUserContext {
+    user: IUser,
+    setUser: Dispatch<SetStateAction<any>>
+}
+
+export const UserContext = createContext<IUserContext>({
+    user: {} as IUser,
+    setUser: () => {}
 });
 
-export const UserContextProvider = ({children}: IUserProps) => {
-    const [user, setUser] = useState({});
+export const UserContextProvider = ({user, children}: IUserProps) => {
+    const [currentUser, setCurrentUser] = useState<IUser>(user);
+    const setUser = (user: IUser) => setCurrentUser(user);
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <UserContext.Provider value={{user: currentUser, setUser}}>
             {children}
         </UserContext.Provider>
     );
 };
-/** setUser nie wiem jak to rozgryżć ....
- * setUse rto pusty obiekt w profile.tsx błąd
- * jak to rozkminię to i błedy w login.tsx i register.tsx pewnie się rozwiążą */

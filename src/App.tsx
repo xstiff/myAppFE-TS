@@ -24,7 +24,7 @@ export const App = () => {
   //avoid to reset logged in user data after page is refreshed
   useEffect(() => {
     const fetchData = async () => {
-      const res = await getUser();
+      const res: any = await getUser();
       setUser(res.data.user);
     };
     fetchData();
@@ -34,11 +34,11 @@ export const App = () => {
     <div className="App bg-gradient-to-r from-cyan-400 via-purple-700 to-red-700 ">
       <Navbar user={user} />
       <Routes>
-        <Route path="/" element={user._id ? <LoggedInHome /> : <Home />} />
+        <Route path="/" element={user ? <LoggedInHome /> : <Home />} />
         <Route
           path="/user/register"
           element={
-            <NotProtectedRoutes loggedIn={!!user._id}>
+            <NotProtectedRoutes loggedIn={!!user}>
               <Register />
             </NotProtectedRoutes>
           }
@@ -46,7 +46,7 @@ export const App = () => {
         <Route
           path="/user/login"
           element={
-            <NotProtectedRoutes loggedIn={!!user._id}>
+            <NotProtectedRoutes loggedIn={!!user}>
               <Login />
             </NotProtectedRoutes>
           }
@@ -54,7 +54,7 @@ export const App = () => {
         <Route
           path="/user/profile"
           element={
-            <ProtectedRoutes loggedIn={!!user._id}>
+            <ProtectedRoutes loggedIn={!!user}>
               <Profile />
             </ProtectedRoutes>
           }
@@ -62,7 +62,7 @@ export const App = () => {
         <Route
           path="/todo/create"
           element={
-            <ProtectedRoutes loggedIn={user._id ? true : false}>
+            <ProtectedRoutes loggedIn={user ? true : false}>
               <AddTask />
             </ProtectedRoutes>
           }
@@ -70,7 +70,7 @@ export const App = () => {
         <Route
           path="/user/update"
           element={
-            <ProtectedRoutes loggedIn={user._id ? true : false}>
+            <ProtectedRoutes loggedIn={user ? true : false}>
               <UpdateProfile />
             </ProtectedRoutes>
           }
@@ -78,7 +78,7 @@ export const App = () => {
         <Route
           path="/user/updatepassword"
           element={
-            <ProtectedRoutes loggedIn={user._id ? true : false}>
+            <ProtectedRoutes loggedIn={user ? true : false}>
               <UpdatePassword />
             </ProtectedRoutes>
           }
@@ -86,7 +86,7 @@ export const App = () => {
         <Route
           path="/todo/view/:id"
           element={
-            <ProtectedRoutes loggedIn={user._id ? true : false}>
+            <ProtectedRoutes loggedIn={user ? true : false}>
               <ViewTask />
             </ProtectedRoutes>
           }
@@ -94,7 +94,7 @@ export const App = () => {
         <Route
           path="/todo/update/:id"
           element={
-            <ProtectedRoutes loggedIn={user._id ? true : false}>
+            <ProtectedRoutes loggedIn={user ? true : false}>
               <UpdateTask />
             </ProtectedRoutes>
           }

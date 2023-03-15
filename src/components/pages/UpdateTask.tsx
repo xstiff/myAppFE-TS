@@ -8,22 +8,22 @@ interface UpdateTaskProps {
     todo: ITodo
 }
 
-export const UpdateTask = (props: UpdateTaskProps) => {
+export const UpdateTask = (props: any) => {
 
     /**  Property 'setTask' does not exist on type '{ task: {}; setUser: () => void; }'.*/
     const {task, setTask} = useContext(TaskContext);
     const {id}  = useParams();
-    const myTodo = task.find((todo) => todo._id === id);
-    const [title, setTitle] = useState(myTodo.title);
-    const [description, setDescription] = useState(myTodo.description);
-    const [completed, setCompleted] = useState(myTodo.completed);
+    const myTodo = task.find((todo: ITodo) => todo._id === id);
+    const [title, setTitle] = useState(myTodo?.title);
+    const [description, setDescription] = useState(myTodo?.description);
+    const [completed, setCompleted] = useState<boolean>(myTodo?.completed as boolean);
 
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const data = {title, description, completed};
-        const response = await updateTask(String(id), data);
+        const response = await updateTask(String(id), data as IUpdateTask );
 
         /** id nadal jako string lub undefined, ale błedu nie ma. zobaczymy czy odpali zawsze można zmienić na any
          * zmieniony typ w task calls.
@@ -65,8 +65,8 @@ export const UpdateTask = (props: UpdateTaskProps) => {
                 </div>
                 <div className="mb-3">
                     <select
-                        value={completed}
-                        onChange={(e) => setCompleted(e.target.value)}
+                        value={completed ? 'true' : 'false' }
+                        onChange={(e): any => setCompleted(e.target.value === 'true' ? true : false )}
                         className="focus:outline-none border-none p-2 rounded w-full"
                     >
                         <option value="false">Not completed</option>

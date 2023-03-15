@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { login } from '../../apiCalls/user.calls.js';
+import { login } from '../../apiCalls/user.calls'
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 

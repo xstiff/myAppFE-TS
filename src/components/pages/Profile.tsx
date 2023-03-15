@@ -8,7 +8,7 @@ interface ProfileProps {
   user: IUser
 }
 
-export const Profile = (props: ProfileProps) => {
+export const Profile = (props: any) => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 

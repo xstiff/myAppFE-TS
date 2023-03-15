@@ -1,13 +1,22 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext,ReactNode,Dispatch, SetStateAction } from 'react';
+import { ITodo } from 'src/types/todoType';
 
 interface IUserProps {
-  children: any
+  children: ReactNode
 }
 
-export const TaskContext = createContext({ task: {}, setUser: () => {} });
+interface ITaskContext {
+  task: Array<ITodo> ,
+  setTask: Dispatch<SetStateAction<any>>
+}
+
+export const TaskContext = createContext<ITaskContext>({ 
+  task: [] as Array<ITodo> || {} as ITodo,
+  setTask: () => {},
+  });
 
 export const TaskContextProvider = ({ children }: IUserProps) => {
-  const [task, setTask] = useState({});
+  const [task, setTask] = useState<any>({});
   return (
     <TaskContext.Provider value={{ task, setTask }}>
       {children}

@@ -8,7 +8,7 @@ interface ViewTaskProps {
 }
 
 
-export const ViewTask = (props: ViewTaskProps) => {
+export const ViewTask = (props: any) => {
   const [todo, setTodo] = useState({});
   const { id } = useParams();
 
